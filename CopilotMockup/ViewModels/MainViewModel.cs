@@ -18,7 +18,7 @@ namespace CopilotMockup.ViewModels
 
         private bool _isFirstPrompt = true;
         private readonly HttpClient _httpClient = new();
-        private readonly string apiKey = "AIzaSyDjCHD_iHrNsNHMibe8MgqDgVKLP5YTlIA";
+        private readonly string apiKey = "KEY_HERE"; //
 
         private string _promptInputText = "Nhập câu hỏi hoặc prompt của bạn tại đây...";
         public string PromptInputText
