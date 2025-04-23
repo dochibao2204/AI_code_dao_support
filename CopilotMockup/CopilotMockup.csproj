@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Icons\add-icon.png" />
+    <None Remove="Assets\Icons\send-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google_GenerativeAI" Version="2.5.8" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.23.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.23.0" />
+    <PackageReference Include="Microsoft.Bot.Builder.Testing" Version="4.23.0" />
+    <PackageReference Include="Microsoft.Bot.Connector" Version="4.23.0" />
+    <PackageReference Include="Microsoft.Bot.Connector.Streaming" Version="4.23.0" />
+    <PackageReference Include="Microsoft.Bot.Schema" Version="4.23.0" />
+    <PackageReference Include="Microsoft.Bot.Streaming" Version="4.23.0" />
+    <PackageReference Include="Microsoft.ML" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.DataView" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.Mkl.Components" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.21.0" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.21.1" />
+    <PackageReference Include="Microsoft.ML.Recommender" Version="0.22.2" />
+    <PackageReference Include="Microsoft.ML.TensorFlow" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="4.0.2" />
+    <PackageReference Include="PDFsharp" Version="6.1.1" />
+    <PackageReference Include="PDFsharp-MigraDoc-WPF" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Icons\add-icon.png" />
+    <Resource Include="Assets\Icons\send-icon.png" />
+  </ItemGroup>
+
+</Project>
