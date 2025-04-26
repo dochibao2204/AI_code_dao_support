@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace CopilotMockup.ViewModels
 {
@@ -18,7 +19,7 @@ namespace CopilotMockup.ViewModels
 
         private bool _isFirstPrompt = true;
         private readonly HttpClient _httpClient = new();
-        private readonly string apiKey = "KEY_HERE"; //
+        private readonly string apiKey = "AIzaSyDjCHD_iHrNsNHMibe8MgqDgVKLP5YTlIA";
 
         private string _promptInputText = "Nhập câu hỏi hoặc prompt của bạn tại đây...";
         public string PromptInputText
@@ -71,20 +72,39 @@ namespace CopilotMockup.ViewModels
                 _isFirstPrompt = false;
             }
 
-             // Delete prompt in TextBox after send
+            // Delete prompt in TextBox after send
             PromptInputText = string.Empty;
 
             string endpoint = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={apiKey}";
 
+            var contents = new List<object>();
+
+            // Include conversation history in the contents array
+            foreach (var message in Messages)
+            {
+                contents.Add(new
+                {
+                    parts = new[]
+                    {
+                        new { text = message.Text }
+                    },
+                    role = message.IsUser ? "user" : "model"
+                });
+            }
+
+            // Add the current user prompt as the final item
+            contents.Add(new
+            {
+                parts = new[]
+                {
+                    new { text = prompt }
+                },
+                role = "user"
+            });
+
             var requestBody = new
             {
-                contents = new[] {
-                    new {
-                        parts = new[] {
-                            new { text = prompt }
-                        }
-                    }
-                }
+                contents = contents
             };
 
             var content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
